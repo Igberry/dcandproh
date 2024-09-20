@@ -1,0 +1,185 @@
+body {
+	background-color: rgb(220, 216, 216);
+}
+
+.image {
+	width: 200px;
+	height: auto;
+	margin: 10px;
+	border-radius: 700px;
+}
+
+nav {
+	background-color: green;
+	margin: 0 auto;
+	max-width: 500px;
+	border-radius: 15px;
+}
+
+nav ul {
+	list-style-type: none;
+}
+
+nav li {
+	text-align: center;
+}
+
+nav a {
+	display: block;
+	color: black;
+	background-color: rgb(168, 243, 168);
+	padding: 2.5rem;
+	text-align: center;
+	text-decoration: none;
+	font-size: 17px;
+	padding: 10px 30px;
+	border-radius: 10px;
+	margin: 8px;
+}
+
+nav a:hover {
+	text-decoration: overline;
+	color: black;
+	background-color: white;
+}
+
+main {
+	display: grid;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+main p{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	text-align: center;
+}
+
+#card {
+	border-radius: 8px;
+	width: fit-content;
+	height: fit-content;
+	text-align: center;
+	margin: 0 auto;
+}
+
+img {
+	width: 180px;
+	height: auto;
+	border-radius: 15px;
+	gap: 100px;
+}
+
+img:hover {
+	transform: scale(1.1);
+}
+
+h1 {
+	text-align: center;
+	background-color: green;
+	color: #fff;
+	padding-bottom: 1px;
+	border-radius: 30px;
+	font-size: 50px;
+	margin: 0 auto;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h2 {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	text-align: center;
+}
+
+h3 {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	text-align: center;
+	font-size: larger;
+	background-color: green;
+	border-radius: 30px;
+	color: #fff;
+}
+
+footer {
+	background-color: green;
+	text-align: center;
+	color: #fff;
+}
+
+#service-1, #service-2, #service-3 {
+	display: block;
+	text-align: center;
+}
+
+#social {
+	text-align: center;
+	background-color: green;
+	border-radius: 30px;
+}
+
+#social img {
+    padding: 20px;
+	width: 40px;
+	height: 40px;
+	border-radius: 30px;
+}
+
+#contact {
+	margin-bottom: 20px;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: auto;
+	margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#formFeedback {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #28a745;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+	nav ul {
+		display: flex;
+	}
+
+	.resourcelinks ul {
+		display: flex;
+	}
+
+}
