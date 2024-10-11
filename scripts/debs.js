@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    // Add click event listener to the hamburger
+    hamburger.addEventListener("click", () => {
+        // Toggle the 'open' class on the nav-links
+        navLinks.classList.toggle("open");
+
+        // Toggle the 'active' class on the hamburger for animation
+        hamburger.classList.toggle("active");
+    });
+});
+
+
 // Function to get the current year
 function getCurrentYear() {
     const currentYear = new Date().getFullYear();

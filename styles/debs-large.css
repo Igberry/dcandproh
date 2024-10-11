@@ -1,0 +1,14 @@
+@media (min-width: 769px) {
+    /* Reset mobile styles for larger views */
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Hide the hamburger menu in larger view */
+    .hamburger {
+        display: none;
+    }
+}
