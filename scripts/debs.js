@@ -31,19 +31,25 @@ window.onload = function () {
     getLastModifiedDate();
 };
 
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent page reload on form submission
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-    // You can add form validation here
-    if (name && email && message) {
-        // Simulating a form submission and response
-        document.getElementById('formFeedback').textContent = 'Thank you, ' + name + '! Your message has been sent.';
-        document.getElementById('contactForm').reset(); // Reset form fields
-    } else {
-        document.getElementById('formFeedback').textContent = 'Please fill out all fields.';
+    const response = await fetch('http://localhost:3000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+    });
+
+    const result = await response.json();
+    const feedback = document.getElementById('formFeedback');
+    feedback.textContent = result.message;
+    feedback.style.color = response.ok ? 'green' : 'red';
+
+    if (response.ok) {
+        document.getElementById('contactForm').reset();
     }
 });
