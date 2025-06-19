@@ -1,3 +1,4 @@
+// Nodemailer config
 const express = require('express');
 const router = express.Router();
 const Message = require('../models/message');
@@ -27,9 +28,9 @@ router.post('/', async (req, res) => {
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
       to: process.env.SMTP_USER,
-      subject: 'New Contact Message',
-      text: message,
-      html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p>${message}</p>`
+      subject: `New Contact Message from ${name}`,
+      text: `You received a new message from your portfolio site:\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
+      replyTo: email
     });
 
     res.status(200).json({ message: 'Message sent successfully!' });

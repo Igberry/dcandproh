@@ -31,25 +31,51 @@ window.onload = function () {
     getLastModifiedDate();
 };
 
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    const contactForm = document.getElementById("contactForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const messageInput = document.getElementById("message");
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const responseMessage = document.createElement("div");
+    contactForm.appendChild(responseMessage);
 
-    const response = await fetch('http://localhost:3000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message })
+    contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if (!name || !email || !message) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        responseMessage.textContent = "Sending...";
+        responseMessage.style.color = "blue";
+
+        try {
+            const res = await fetch("http://localhost:3000/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, message }),
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                responseMessage.textContent = data.message || "Message sent successfully!";
+                responseMessage.style.color = "green";
+                contactForm.reset();
+            } else {
+                responseMessage.textContent = data.message || "Something went wrong.";
+                responseMessage.style.color = "red";
+            }
+        } catch (err) {
+            console.error("Fetch error:", err);
+            responseMessage.textContent = "Failed to send. Please try again later.";
+            responseMessage.style.color = "red";
+        }
     });
-
-    const result = await response.json();
-    const feedback = document.getElementById('formFeedback');
-    feedback.textContent = result.message;
-    feedback.style.color = response.ok ? 'green' : 'red';
-
-    if (response.ok) {
-        document.getElementById('contactForm').reset();
-    }
 });
