@@ -161,36 +161,6 @@ footer {
 	line-height: 1.4;
 }
 
-/* === RESPONSIVE NAVIGATION === */
-@media (max-width: 768px) {
-	nav ul {
-		flex-direction: column;
-		background-color: #1f3f2c;
-		position: absolute;
-		top: 100%;
-		right: 0;
-		width: 100%;
-		max-height: 0;
-		overflow: hidden;
-		transition: max-height 0.3s ease;
-		z-index: 1000;
-	}
-
-	nav ul.show {
-		max-height: 300px;
-		padding: 1rem 0;
-	}
-
-	nav ul li {
-		text-align: center;
-		padding: 0.8rem 0;
-	}
-
-	.hamburger {
-		display: flex;
-	}
-}
-
 /* === SERVICES SECTIONS === */
 .service-section {
 	margin: 3rem auto;
@@ -323,8 +293,49 @@ form#contactForm button:hover {
 	/* red tone for errors; you can change to green for success */
 }
 
-/* === SMALL DEVICES === */
-@media (max-width: 400px) {
+/* === RESPONSIVE NAVIGATION === */
+@media (max-width: 768px) {
+	.hamburger {
+		display: flex;
+		flex-direction: column;
+		cursor: pointer;
+		gap: 3px;
+		z-index: 1001;
+		position: relative;
+	}
+
+	/* Mobile nav menu */
+	#nav-links {
+		display: none;
+		flex-direction: column;
+		position: absolute;
+		top: 100%;
+		/* Right under the navbar */
+		left: 0;
+		background-color: #1a3c1a;
+		/* Match your site theme */
+		padding: 1rem 0;
+		z-index: 1000;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	#nav-links.active {
+		display: flex;
+	}
+
+	#nav-links li {
+		text-align: left;
+	}
+
+	#nav-links li a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 1rem;
+		font-weight: 600;
+		display: block;
+	}
+
+
 	header h1 p {
 		font-size: 1rem;
 	}
